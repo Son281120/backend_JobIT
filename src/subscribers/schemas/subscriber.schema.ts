@@ -13,6 +13,9 @@ export class Subscriber {
   @Prop()
   skills: string[];
 
+  @Prop()
+  gmail: string;
+
   @Prop({ type: Object })
   createdBy: {
     _id: mongoose.Schema.Types.ObjectId;

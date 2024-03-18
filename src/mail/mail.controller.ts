@@ -50,7 +50,7 @@ export class MailController {
         });
 
         await this.mailerService.sendMail({
-          to: 'nguyenxuanson281120@gmail.com',
+          to: subs.gmail,
           from: '"Support Team" <support@example.com>', // override default from
           subject: 'Welcome to JobIT! New job for you!',
           template: 'job',

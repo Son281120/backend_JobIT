@@ -16,7 +16,7 @@ export class SubscribersService {
   ) {}
 
   async create(createSubscriberDto: CreateSubscriberDto, user: IUser) {
-    const { name, email, skills } = createSubscriberDto;
+    const { name, email, skills, gmail } = createSubscriberDto;
     const isExsitSubscriber = await this.subscriberModel.findOne({ email });
     if (isExsitSubscriber) {
       throw new BadRequestException(
@@ -28,6 +28,7 @@ export class SubscribersService {
       name,
       email,
       skills,
+      gmail,
       createdBy: {
         _id: user._id,
         email: user._id,
@@ -41,7 +42,7 @@ export class SubscribersService {
 
   async getSkills(user: IUser) {
     const { email } = user;
-    return await this.subscriberModel.findOne({ email }, { skills: 1 });
+    return await this.subscriberModel.findOne({ email }, { skills: 1, gmail: 1 });
   }
 
   async findAll(currentPage: number, limit: number, qr: string) {
